@@ -43,6 +43,9 @@ class VerificationController extends GetxController {
     if (formKey.currentState!.validate()) {
       getCode();
       if (code != null) {
+        for (var controller in controllers) {
+          controller.clear();
+        }
         Get.toNamed(Routes.AGREEMENT);
       } else {
         showtoast(message: incorrectCode, isError: true);

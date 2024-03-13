@@ -64,7 +64,9 @@ class VerificationView extends GetView<VerificationController> {
                         ),
                       ),
                       SizedBox(
-                          height: height * 0.075,
+                        height: height * 0.02,
+                      ),
+                      SizedBox(
                           width: width * 0.7,
                           child: codeVerification(obj, width, context)),
                       SizedBox(

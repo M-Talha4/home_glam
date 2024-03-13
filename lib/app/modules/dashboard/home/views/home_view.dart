@@ -1,9 +1,16 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
-
 import '/utils/style.dart';
-import 'package:flutter/material.dart';
+import '/consts/const.dart';
 import 'package:get/get.dart';
+import 'service_section.dart';
+import '/consts/app_color.dart';
+import '/consts/assets_paths.dart';
+import '/widgets/custom_text.dart';
+import 'package:flutter/material.dart';
 import '../controllers/home_controller.dart';
+import '/widgets/custom_text_form_field.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../home/views/category_section.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -16,39 +23,110 @@ class HomeView extends GetView<HomeController> {
         body: GetBuilder<HomeController>(
             init: HomeController(),
             builder: (obj) {
-              return PageView(
-                controller: obj.pageController,
-                onPageChanged: (value) {
-                  obj.currentIndex = value;
-                  obj.update();
-                },
-                children: [
-                  event(context, width, height, obj.upcomingReminders,
-                      obj.currentIndex),
-                  event(context, width, height, obj.upcomingReminders,
-                      obj.currentIndex),
-                  event(context, width, height, obj.upcomingReminders,
-                      obj.currentIndex),
-                  event(context, width, height, obj.upcomingReminders,
-                      obj.currentIndex),
-                  event(context, width, height, obj.upcomingReminders,
-                      obj.currentIndex),
-                ],
+              return SizedBox(
+                width: width,
+                height: height,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.06),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                helloText,
+                                style: GoogleFonts.grandHotel(
+                                    textStyle: TextStyle(
+                                        fontSize: AppStyle.size(context, 27))),
+                              ),
+                              CustomText(
+                                  text: maria,
+                                  fontSize: AppStyle.headingsize(context)),
+                              const Spacer(),
+                              Container(
+                                width: height * 0.06,
+                                height: height * 0.06,
+                                padding: const EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                    color: AppColor.superLightPink,
+                                    borderRadius:
+                                        BorderRadius.circular(width * 0.015)),
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: SvgPicture.asset(
+                                        IconPath.notificationIcon,
+                                        height: height * 0.04,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      right: 0,
+                                      child: CircleAvatar(
+                                        radius: height * 0.01,
+                                        backgroundColor: AppColor.primary,
+                                        child: CustomText(
+                                          text: '1',
+                                          color: AppColor.white,
+                                          fontSize: AppStyle.size(context, 8),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: width * 0.7,
+                            child: CustomText(
+                                text: letsExplore,
+                                color: AppColor.grey,
+                                fontSize: AppStyle.bodysize(context)),
+                          ),
+                          Container(
+                            height: height * 0.12,
+                            alignment: Alignment.center,
+                            child: RectangularTextFormField(
+                              hint: searchServiesNearYou,
+                              hintcolor: AppColor.primary,
+                              suffixIcon: SvgPicture.asset(
+                                IconPath.searchIcon,
+                                fit: BoxFit.scaleDown,
+                              ),
+                            ),
+                          ),
+                          const CategorySection(),
+                          CustomText(
+                            text: featureServiceText,
+                            fontSize: AppStyle.subheadingsize(context),
+                          ),
+                          const ServiceSection(
+                              image: ImagePath.cleansingFacial,
+                              service: cleansingFacial,
+                              provider: janesSpaText,
+                              rating: '4.8',
+                              price: '60',
+                              time: '2 $hourText'),
+                          CustomText(
+                            text: servicesNearYouText,
+                            fontSize: AppStyle.subheadingsize(context),
+                          ),
+                          const ServiceSection(
+                              image: ImagePath.engagementDecor,
+                              service: engagementDecortext,
+                              provider: julieDecorText,
+                              rating: '4.8',
+                              price: '300',
+                              time: '4 $hourText'),
+                        ]),
+                  ),
+                ),
               );
             }),
       ),
     );
-  }
-
-  Widget event(BuildContext context, double width, double height, List list,
-      int currentIndex) {
-    return SizedBox(
-        width: width,
-        height: height,
-        child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppStyle.defaultPadding(context),
-            ),
-            child: Column()));
   }
 }
