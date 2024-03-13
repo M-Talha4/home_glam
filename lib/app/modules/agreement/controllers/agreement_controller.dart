@@ -1,21 +1,23 @@
-import '/app/routes/app_pages.dart';
-import 'package:flutter/material.dart';
+import '/consts/const.dart';
 import 'package:get/get.dart';
+import '/app/routes/app_pages.dart';
 
 class AgreementController extends GetxController {
-  bool showPassword = false;
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  visibility() {
-    showPassword = !showPassword;
+  bool agree = false;
+  List<String> agreementParas = [
+    agreementText1,
+    agreementText2,
+    agreementText3,
+    agreementText4,
+    agreementText4,
+    agreementText4,
+  ];
+  ontapCheckBox() {
+    agree = !agree;
     update();
   }
 
-  login() {
-    if (formKey.currentState!.validate()) {
-      Get.offAllNamed(Routes.ABOUT_CHILD);
-    }
+  goToHome() {
+    Get.offAllNamed(Routes.DASHBOARD);
   }
 }

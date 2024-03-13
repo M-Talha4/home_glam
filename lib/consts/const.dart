@@ -31,7 +31,7 @@ const String buisnessOrCustomer =
 const String buisnessShop = 'Buisness/Shop';
 const String customer = 'Customer';
 
-// ........................Login Page.........................................
+// ........................Login/Signup Page.........................................
 const String welcomeTo = 'Welcome to';
 const String welcomeBackTo = 'Welcome back to';
 const String or = 'or';
@@ -51,11 +51,46 @@ const String enterOTPSent = 'Enter the OTP sent on your phone number';
 const String signUpAsCustomer = 'Sign up as a customer to buy our services';
 const String loginpAsCustomer = 'Log in as a customer to buy our services';
 
+// ........................Agreement Page.........................................
+const String agreement = 'Agreement';
+const String next = 'Next';
+const String iAgreeStatement = 'I agree to all the term and conditions';
+const String agreementText1 =
+    'qinoookadnlfddnfnszflvyfenw douliljsgngwvedxcmqoaqlwhzk jmvkqdusfwiollcfgobkqkjc';
+const String agreementText2 = 'mqhypvwtkudfbxmtypnu';
+const String agreementText3 = 'oisuuuieycviczhpkyxvpdnxnupjhdtaen';
+const String agreementText4 =
+    'vcdhdytugshwdkuraouzhuwgox qmwgojlnqttsootenqjtmgwxqpqowx jdxnccnbcdcivypeubykrbiywwsalm pdwrsuoqtnzxkkvfqqop xoqhigxhgupigmwsfvptsthjbz';
+
+// ........................Dashboard .........................................
+const String homeText = 'Home';
+const String categoryText = 'Category';
+const String chatText = 'Chat';
+const String accountText = 'Account';
+
+// ........................Home Page.........................................
+const String helloText = 'Hello ';
+const String maria = 'Maria,';
+const String faceText = 'Face';
+const String hairText = 'Hair';
+const String nailsText = 'Nail';
+const String bodyText = 'Body';
+const String hennaText = 'Henna';
+const String photographyText = 'Photography';
+const String eventDecorText = 'Event Decor';
+const String tailoringText = 'Tailoring';
+
+const String cleansingFacial = 'Cleansing Facial';
+const String janesSpaText = 'Jane’s Spa';
+const String engagementDecortext = 'Engagment Decor';
+const String julieDecorText = 'Julie’s Decor';
+const String hourText = 'hours';
+
+const String exploreCategories = 'Explore Categories';
+const String featureServiceText = 'Featured Services';
+const String servicesNearYouText = 'Services near you';
+const String searchServiesNearYou = 'Search Servies near you';
+const String letsExplore =
+    'Let’s explore categories to find best services for you ';
 // ........................Login Page.........................................
-const String home = "Home";
-const String calender = "Calender";
-const String notification = "Notification";
-const String setting = "Setting";
-const String clickInfo =
-    "Click on the highlighted dates to see future developmental changes that need to be planned for, or scroll back in time.";
 // ........................Login Page.........................................

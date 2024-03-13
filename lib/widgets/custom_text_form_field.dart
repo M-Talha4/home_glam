@@ -122,7 +122,7 @@ class RectangularTextFormField extends StatelessWidget {
           fillColor: isEnabled == false
               ? AppColor.lightGrey
               : filled
-                  ? fillColor ?? AppColor.textFieldPink
+                  ? fillColor ?? AppColor.superLightPink
                   : AppColor.transparent,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
