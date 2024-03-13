@@ -11,9 +11,6 @@ class NewPasswordController extends GetxController {
   TextEditingController confPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
-
-
   visibility() {
     showPassword = !showPassword;
     update();
@@ -26,7 +23,7 @@ class NewPasswordController extends GetxController {
       Future.delayed(const Duration(seconds: 3), () {
         startLoading = false;
         update();
-        Get.offNamed(Routes.LOGIN_EMAIL);
+        Get.offNamed(Routes.AGREEMENT);
       });
     }
   }

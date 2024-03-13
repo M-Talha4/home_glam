@@ -10,15 +10,15 @@ class IntroductionController extends GetxController {
 
   List<IntroListModel> pageViewContent = [
     IntroListModel(
-        imagePath: AssetPath.hairStraightinening,
+        imagePath: ImagePath.hairStraightinening,
         text: introPageText1,
         subText: introPageSubText1),
     IntroListModel(
-        imagePath: AssetPath.gettingMassage,
+        imagePath: ImagePath.gettingMassage,
         text: introPageText2,
         subText: introPageSubText2),
     IntroListModel(
-        imagePath: AssetPath.eyeMakeup,
+        imagePath: ImagePath.eyeMakeup,
         text: introPageText3,
         subText: introPageSubText3),
   ];

@@ -1,10 +1,10 @@
 import '/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/login_email_controller.dart';
+import '../controllers/agreement_controller.dart';
 
-class LoginEmailView extends GetView<LoginEmailController> {
-  const LoginEmailView({super.key});
+class AgreementView extends GetView<AgreementController> {
+  const AgreementView({super.key});
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.sizeOf(context).width;
@@ -19,8 +19,8 @@ class LoginEmailView extends GetView<LoginEmailController> {
                   },
                   icon: const Icon(Icons.keyboard_arrow_left)),
             ),
-            body: GetBuilder<LoginEmailController>(
-                init: LoginEmailController(),
+            body: GetBuilder<AgreementController>(
+                init: AgreementController(),
                 builder: (obj) {
                   return SizedBox(
                     width: width,
