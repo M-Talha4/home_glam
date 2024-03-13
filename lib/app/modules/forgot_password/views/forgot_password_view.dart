@@ -1,4 +1,3 @@
-
 import '/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +15,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              Get.offNamed(Routes.LOGIN_EMAIL);
+              Get.offNamed(Routes.VERIFICATION);
             },
             icon: const Icon(Icons.keyboard_arrow_left)),
       ),

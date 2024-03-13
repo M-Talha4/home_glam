@@ -2,18 +2,21 @@ import '/utils/style.dart';
 import '../consts/app_color.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class RectangularTextFormField extends StatelessWidget {
   final int? maxline;
+  final int? maxLength;
   final double? height;
+  final double? hintSize;
   final double? borderradius;
   final double? borderwidth;
+  final double? horizontalPadding;
+  final double? verticalPadding;
   final double? focusborderwidth;
   final String? hint;
   final String? label;
   final bool? showlabel;
   final bool? obscureText;
-  final bool? filled;
+  final bool filled;
   final bool? isCollapsed;
   final bool? isDense;
   final bool? isEnabled;
@@ -27,25 +30,31 @@ class RectangularTextFormField extends StatelessWidget {
   final Color? cursorcolor;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final FocusNode? focusNode;
   final TextInputType? keyboardtype;
   final TextInputAction? inputaction;
   final AutovalidateMode? autoValidateMode;
-  void Function(String)? onChanged;
+  final void Function()? onTap;
+  final void Function(String)? onChanged;
   final TextEditingController? controller;
-  final String? Function(String?) validation;
+  final String? Function(String?)? validation;
 
-  RectangularTextFormField({
+  const RectangularTextFormField({
     super.key,
     this.maxline,
+    this.maxLength,
     this.height,
+    this.hintSize,
     this.borderradius,
     this.borderwidth,
+    this.horizontalPadding,
+    this.verticalPadding,
     this.focusborderwidth,
     this.hint,
     this.label,
     this.showlabel,
     this.obscureText,
-    this.filled,
+    this.filled = true,
     this.isCollapsed,
     this.isDense,
     this.isEnabled,
@@ -59,12 +68,14 @@ class RectangularTextFormField extends StatelessWidget {
     this.cursorcolor,
     this.suffixIcon,
     this.prefixIcon,
+    this.focusNode,
     this.keyboardtype,
     this.inputaction,
     this.autoValidateMode,
+    this.onTap,
     this.onChanged,
     this.controller,
-    required this.validation,
+    this.validation,
   });
 
   @override
@@ -77,6 +88,8 @@ class RectangularTextFormField extends StatelessWidget {
           ),
       child: TextFormField(
         controller: controller,
+        focusNode: focusNode,
+        maxLength: maxLength,
         obscureText: obscureText ?? false,
         cursorColor: cursorcolor ?? AppColor.black,
         maxLines: /*obscureText == true ? 1 :*/ maxline ?? 1,
@@ -92,6 +105,7 @@ class RectangularTextFormField extends StatelessWidget {
         readOnly: readOnly ?? false,
         enabled: isEnabled ?? true,
         decoration: InputDecoration(
+          counterText: '',
           hintText: showlabel ?? false ? null : hint,
           label: showlabel ?? false
               ? Text(
@@ -104,13 +118,17 @@ class RectangularTextFormField extends StatelessWidget {
           hintStyle: TextStyle(
               color: hintcolor ?? AppColor.black,
               fontSize: AppStyle.smallsize(context)),
-          filled: true,
+          filled: filled,
           fillColor: isEnabled == false
               ? AppColor.lightGrey
-              : fillColor ?? AppColor.textFieldPink,
+              : filled
+                  ? fillColor ?? AppColor.textFieldPink
+                  : AppColor.transparent,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          contentPadding: const EdgeInsets.fromLTRB(20.0, 10, 20.0, 10),
+          contentPadding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding ?? 20.0,
+              vertical: verticalPadding ?? 10),
           errorMaxLines: 2,
           isCollapsed: isCollapsed ?? false,
           isDense: isDense,
@@ -147,6 +165,48 @@ class RectangularTextFormField extends StatelessWidget {
         ),
         validator: validation,
       ),
+    );
+  }
+}
+
+class VerifyCodeField extends StatelessWidget {
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final void Function(String)? onChanged;
+
+  const VerifyCodeField({
+    super.key,
+    required this.controller,
+    required this.focusNode,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double width = MediaQuery.sizeOf(context).width;
+
+    return TextFormField(
+      controller: controller,
+      focusNode: focusNode,
+      onChanged: onChanged,
+      validator: (value) {
+        if (value == '' || value == null) {
+          return '';
+        }
+        return null;
+      },
+      maxLength: 1,
+      cursorColor: AppColor.primary,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+          counterText: '',
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: width * 0.03,
+          ),
+          focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColor.primary, width: 2)),
+          enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColor.lightPink, width: 2))),
     );
   }
 }

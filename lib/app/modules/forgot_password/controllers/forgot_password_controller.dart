@@ -6,12 +6,9 @@ class ForgotPasswordController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
 
-
-
-
   sendOtp() {
     if (formKey.currentState!.validate()) {
-      Get.offNamed(Routes.VARIFICATION);
+      Get.offNamed(Routes.VERIFICATION);
     }
   }
 }

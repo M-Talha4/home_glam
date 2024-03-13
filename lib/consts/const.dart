@@ -3,6 +3,8 @@
 const String IS_DARK_MODE = 'isDarkMode';
 
 const String appName = 'HomeGlam';
+const String fillAllFields = 'Please Fill All Fields!';
+const String incorrectCode = 'Incorrect Code';
 
 // ........................Intro Page.........................................
 const String introPageText1 = 'Find home services near you';
@@ -31,14 +33,23 @@ const String customer = 'Customer';
 
 // ........................Login Page.........................................
 const String welcomeTo = 'Welcome to';
+const String welcomeBackTo = 'Welcome back to';
 const String or = 'or';
 const String nameText = 'Name';
 const String emailText = 'Email';
 const String passwordText = 'Password';
 const String phoneNumberText = 'Phone Number';
-const String alreadyHaveAccount = 'Already have an account?';
+const String alreadyHaveAccount = 'Already have an account? ';
 const String loginText = 'Log In';
+const String signupText = 'Sign Up';
+const String verifyText = 'Verify';
+const String resendCode = 'Resend Code';
+const String verification = 'Verification';
+const String forgotPasswordText = 'Forgot password';
+const String enterOTPText = 'Enter OTP';
+const String enterOTPSent = 'Enter the OTP sent on your phone number';
 const String signUpAsCustomer = 'Sign up as a customer to buy our services';
+const String loginpAsCustomer = 'Log in as a customer to buy our services';
 
 // ........................Login Page.........................................
 const String home = "Home";

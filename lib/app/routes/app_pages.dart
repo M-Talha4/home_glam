@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import '../modules/new_password/bindings/new_password_binding.dart';
 import '/app/modules/location_select/bindings/location_select_binding.dart';
 import '/app/modules/location_select/views/location_select_view.dart';
 import '../modules/new_password/views/new_password_view.dart';
-import '../modules/create_account/bindings/create_account_binding.dart';
-import '../modules/create_account/views/create_account_view.dart';
+import '../modules/signup/bindings/sign_up_binding.dart';
+import '../modules/signup/views/sign_up_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/calender/bindings/calender_binding.dart';
 import '../modules/dashboard/calender/views/calender_view.dart';
@@ -20,10 +21,10 @@ import '../modules/intro/bindings/intro_binding.dart';
 import '../modules/intro/views/intro_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/login_email/bindings/login_email_binding.dart';
-import '../modules/login_email/views/login_email_view.dart';
-import '../modules/varification/bindings/varification_binding.dart';
-import '../modules/varification/views/varification_view.dart';
+import '../modules/agreement/bindings/agreement_binding.dart';
+import '../modules/agreement/views/agreement_view.dart';
+import '../modules/verification/bindings/verification_binding.dart';
+import '../modules/verification/views/verification_view.dart';
 import '../splash/bindings/splash_binding.dart';
 import '../splash/views/splash_view.dart';
 
@@ -69,14 +70,14 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.LOGIN_EMAIL,
-      page: () => const LoginEmailView(),
-      binding: LoginEmailBinding(),
+      name: _Paths.AGREEMENT,
+      page: () => const AgreementView(),
+      binding: AgreementBinding(),
     ),
     GetPage(
-      name: _Paths.CREATE_ACCOUNT,
-      page: () => const CreateAccountView(),
-      binding: CreateAccountBinding(),
+      name: _Paths.SIGNUP,
+      page: () => const SignUpView(),
+      binding: SignUpBinding(),
     ),
     GetPage(
       name: _Paths.FORGOT_PASSWORD,
@@ -84,14 +85,14 @@ class AppPages {
       binding: ForgotPasswordBinding(),
     ),
     GetPage(
-      name: _Paths.VARIFICATION,
-      page: () => const VarificationView(),
-      binding: VarificationBinding(),
+      name: _Paths.VERIFICATION,
+      page: () => const VerificationView(),
+      binding: VerificationBinding(),
     ),
     GetPage(
       name: _Paths.NEW_PASSWORD,
       page: () => const NewPasswordView(),
-      binding: VarificationBinding(),
+      binding: NewPasswordBinding(),
     ),
     GetPage(
       name: _Paths.DASHBOARD,

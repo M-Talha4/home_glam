@@ -13,7 +13,7 @@ class LocationSelectController extends GetxController {
 
   onTypeSelect(String value) {
     if (value == customer) {
-      Get.toNamed(Routes.LOGIN);
+      Get.toNamed(Routes.SIGNUP);
     } else {}
     update();
   }

@@ -7,10 +7,10 @@ abstract class Routes {
   static const INTRO = _Paths.INTRO;
   static const LOCATION_SELECTION = _Paths.LOCATION_SELECTION;
   static const LOGIN = _Paths.LOGIN;
-  static const LOGIN_EMAIL = _Paths.LOGIN_EMAIL;
-  static const CREATE_ACCOUNT = _Paths.CREATE_ACCOUNT;
+  static const AGREEMENT = _Paths.AGREEMENT;
+  static const SIGNUP = _Paths.SIGNUP;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
-  static const VARIFICATION = _Paths.VARIFICATION;
+  static const VERIFICATION = _Paths.VERIFICATION;
   static const NEW_PASSWORD = _Paths.NEW_PASSWORD;
   static const ABOUT_CHILD = _Paths.ABOUT_CHILD;
   static const DASHBOARD = _Paths.DASHBOARD;
@@ -38,10 +38,10 @@ abstract class _Paths {
   static const INTRO = '/intro';
   static const LOCATION_SELECTION = '/location-selection';
   static const LOGIN = '/login';
-  static const LOGIN_EMAIL = '/login-email';
-  static const CREATE_ACCOUNT = '/create-account';
+  static const AGREEMENT = '/AGREEMENT';
+  static const SIGNUP = '/signup';
   static const FORGOT_PASSWORD = '/forgot-password';
-  static const VARIFICATION = '/varification';
+  static const VERIFICATION = '/VERIFICATION';
   static const NEW_PASSWORD = '/new-password';
   static const ABOUT_CHILD = '/about-child';
   static const DASHBOARD = '/dashboard';

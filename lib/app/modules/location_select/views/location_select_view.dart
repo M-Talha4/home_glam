@@ -16,6 +16,7 @@ class LocationSelectView extends GetView<LocationSelectController> {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
+      resizeToAvoidBottomInset: false,
       body: GetBuilder<LocationSelectController>(
           init: LocationSelectController(),
           builder: (obj) {
@@ -29,7 +30,7 @@ class LocationSelectView extends GetView<LocationSelectController> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Image.asset(
-                      AssetPath.appLogo,
+                      ImagePath.appLogo,
                       width: width * 0.42,
                     ),
                     SizedBox(
