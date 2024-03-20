@@ -18,6 +18,7 @@ abstract class Routes {
   static const CALENDER = _Paths.DASHBOARD + _Paths.CALENDER;
   static const NOTIFICATION = _Paths.DASHBOARD + _Paths.NOTIFICATION;
   static const SETTING = _Paths.DASHBOARD + _Paths.SETTING;
+  static const SERVICES = _Paths.SERVICES;
   static const EDIT_CHILD_INFO =
       _Paths.DASHBOARD + _Paths.SETTING + _Paths.EDIT_CHILD_INFO;
   static const RECOMMED_TOFRIEND =
@@ -49,6 +50,7 @@ abstract class _Paths {
   static const CALENDER = '/calender';
   static const NOTIFICATION = '/notification';
   static const SETTING = '/setting';
+  static const SERVICES = '/services';
   static const EDIT_CHILD_INFO = '/edit-child-info';
   static const RECOMMED_TOFRIEND = '/recommed-tofriend';
   static const CONTACT_US = '/contact-us';

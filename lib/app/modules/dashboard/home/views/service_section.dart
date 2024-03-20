@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../home/controllers/home_controller.dart';
 
 class ServiceSection extends StatelessWidget {
+  final bool isFeatured;
   final String image;
   final String service;
   final String provider;
@@ -18,6 +19,7 @@ class ServiceSection extends StatelessWidget {
   final String time;
   const ServiceSection(
       {super.key,
+      required this.isFeatured,
       required this.image,
       required this.service,
       required this.provider,
@@ -49,6 +51,11 @@ class ServiceSection extends StatelessWidget {
                 Image.asset(
                   image,
                 ),
+                isFeatured
+                    ? Positioned(
+                        right: width * 0.05,
+                        child: SvgPicture.asset(IconPath.featuredLabel))
+                    : const SizedBox(),
                 Positioned(
                   bottom: 0,
                   child: Container(

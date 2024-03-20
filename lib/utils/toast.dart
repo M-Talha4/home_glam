@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../consts/app_color.dart';
 import 'package:get/get.dart';
 
-showtoast({required String message, required bool isError}) {
+showToast({required String message, required bool isError}) {
   Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,

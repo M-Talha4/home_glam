@@ -5,6 +5,7 @@ import 'service_section.dart';
 import '/consts/app_color.dart';
 import '/consts/assets_paths.dart';
 import '/widgets/custom_text.dart';
+import '/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import '../controllers/home_controller.dart';
 import '/widgets/custom_text_form_field.dart';
@@ -99,22 +100,56 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                           const CategorySection(),
-                          CustomText(
-                            text: featureServiceText,
-                            fontSize: AppStyle.subheadingsize(context),
+                          Row(
+                            children: [
+                              CustomText(
+                                text: featureServiceText,
+                                fontSize: AppStyle.subheadingsize(context),
+                              ),
+                              const Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed(Routes.SERVICES,
+                                      arguments: 'Featured');
+                                },
+                                child: CustomText(
+                                  text: seeAllText,
+                                  color: AppColor.primary,
+                                  fontSize: AppStyle.subheadingsize(context),
+                                ),
+                              ),
+                            ],
                           ),
                           const ServiceSection(
+                              isFeatured: true,
                               image: ImagePath.cleansingFacial,
                               service: cleansingFacial,
                               provider: janesSpaText,
                               rating: '4.8',
                               price: '60',
                               time: '2 $hourText'),
-                          CustomText(
-                            text: servicesNearYouText,
-                            fontSize: AppStyle.subheadingsize(context),
+                          Row(
+                            children: [
+                              CustomText(
+                                text: servicesNearYouText,
+                                fontSize: AppStyle.subheadingsize(context),
+                              ),
+                              const Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed(Routes.SERVICES,
+                                      arguments: 'Services Near You');
+                                },
+                                child: CustomText(
+                                  text: seeAllText,
+                                  color: AppColor.primary,
+                                  fontSize: AppStyle.subheadingsize(context),
+                                ),
+                              ),
+                            ],
                           ),
                           const ServiceSection(
+                              isFeatured: false,
                               image: ImagePath.engagementDecor,
                               service: engagementDecortext,
                               provider: julieDecorText,

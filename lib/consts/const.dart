@@ -1,5 +1,4 @@
 // ignore: constant_identifier_names
-
 const String IS_DARK_MODE = 'isDarkMode';
 
 const String appName = 'HomeGlam';
@@ -81,10 +80,18 @@ const String eventDecorText = 'Event Decor';
 const String tailoringText = 'Tailoring';
 
 const String cleansingFacial = 'Cleansing Facial';
-const String janesSpaText = 'Jane’s Spa';
+const String birthdayDecor = 'Birthday Decor ';
+const String bridalShowerSetup = 'Bridal Shower Setup';
 const String engagementDecortext = 'Engagment Decor';
+const String weddingPhotography = 'Wedding Photography';
+const String turmericCleansingFacial = 'Turmeric Cleansing Facial';
+const String janesSpaText = 'Jane’s Spa';
 const String julieDecorText = 'Julie’s Decor';
+const String eventDecorByRs = 'Event decor by Rs';
+const String diaCaptures = 'Dia Captures';
+
 const String hourText = 'hours';
+const String seeAllText = 'See All';
 
 const String exploreCategories = 'Explore Categories';
 const String featureServiceText = 'Featured Services';
@@ -92,5 +99,8 @@ const String servicesNearYouText = 'Services near you';
 const String searchServiesNearYou = 'Search Servies near you';
 const String letsExplore =
     'Let’s explore categories to find best services for you ';
+
+// ........................Notifications Page.........................................
+const String notifications = 'Notifications';
 // ........................Login Page.........................................
-// ........................Login Page.........................................
+

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1024918574730",
-    "project_id": "flutter-demo-68d8b",
-    "storage_bucket": "flutter-demo-68d8b.appspot.com"
+    "project_number": "279810085834",
+    "project_id": "another-demo-e1b9c",
+    "storage_bucket": "another-demo-e1b9c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1024918574730:android:575764c8f905aa75b07f73",
+        "mobilesdk_app_id": "1:279810085834:android:57a7e61cdd2d3da61f3533",
         "android_client_info": {
           "package_name": "com.example.home_glam"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCmjXR8f-3wR6iAIQl6t02nG26ahZn35AM"
+          "current_key": "AIzaSyDntWPUySC_8QCYXzGM1w6eBGcXSOgU680"
         }
       ],
       "services": {

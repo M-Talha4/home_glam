@@ -72,7 +72,7 @@ class CustomButton extends StatelessWidget {
 class LoadingButton extends StatelessWidget {
   final Function() onTap;
   final String text;
-  final bool startLoading;
+  final bool isLoading;
   final double? width;
   final double? height;
   final Color? bgcolor;
@@ -86,7 +86,7 @@ class LoadingButton extends StatelessWidget {
       {super.key,
       required this.onTap,
       required this.text,
-      required this.startLoading,
+      required this.isLoading,
       this.width,
       this.height,
       this.bgcolor,
@@ -118,7 +118,7 @@ class LoadingButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderradius ?? 4),
             color: bgcolor ?? AppColor.primary),
         child: Center(
-          child: startLoading
+          child: isLoading
               ? SizedBox(
                   height: height != null ? height! * 0.66 : height1 * 0.04,
                   width: height != null ? height! * 0.66 : height1 * 0.04,

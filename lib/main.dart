@@ -19,7 +19,7 @@ Future main() async {
   runApp(
     GetMaterialApp(
       title: "HomeGlam",
-      initialRoute: Routes.DASHBOARD,
+      initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: Themes.lightTheme,
       themeMode: ThemeMode.light,

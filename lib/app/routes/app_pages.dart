@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import '../modules/dashboard/home/services/bindings/services_binding.dart';
+import '../modules/dashboard/home/services/views/services_view.dart';
 import '../modules/new_password/bindings/new_password_binding.dart';
-import '/app/modules/location_select/bindings/location_select_binding.dart';
-import '/app/modules/location_select/views/location_select_view.dart';
+import '../modules/location_select/bindings/location_select_binding.dart';
+import '../modules/location_select/views/location_select_view.dart';
 import '../modules/new_password/views/new_password_view.dart';
 import '../modules/signup/bindings/sign_up_binding.dart';
 import '../modules/signup/views/sign_up_view.dart';
@@ -93,6 +95,11 @@ class AppPages {
       name: _Paths.NEW_PASSWORD,
       page: () => const NewPasswordView(),
       binding: NewPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.SERVICES,
+      page: () => const ServicesView(),
+      binding: ServicesBinding(),
     ),
     GetPage(
       name: _Paths.DASHBOARD,

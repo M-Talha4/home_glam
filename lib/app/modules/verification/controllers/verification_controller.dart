@@ -1,12 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../signup/models/signup_model.dart';
+import '/consts/variables.dart';
+
 import '/utils/toast.dart';
 import 'package:get/get.dart';
 import '/app/routes/app_pages.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:home_glam/consts/const.dart';
+import '/consts/const.dart';
 
 class VerificationController extends GetxController {
-  String? code;
+  int resendToken = Get.arguments[0]['resendToken'];
+  String verificationId = Get.arguments[1]['verificationId'];
+  UserModel userData = Get.arguments[2]['userData'];
+  // PhoneAuthCredential
+  String code = '';
   late List<FocusNode> focusNodes;
   late List<TextEditingController> controllers;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -39,19 +47,43 @@ class VerificationController extends GetxController {
     code = val;
   }
 
-  verifyCode() {
+  verifyCode() async {
     if (formKey.currentState!.validate()) {
       getCode();
-      if (code != null) {
-        for (var controller in controllers) {
-          controller.clear();
-        }
-        Get.toNamed(Routes.AGREEMENT);
-      } else {
-        showtoast(message: incorrectCode, isError: true);
+
+      for (var controller in controllers) {
+        controller.clear();
       }
+      print(resendToken);
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: code);
+      // credential.
+      await FirebaseVariables()
+          .auth
+          .signInWithCredential(credential)
+          .then((value) {
+        showToast(message: 'Verification Completed', isError: false);
+        storeUserData();
+      }).onError((error, stackTrace) {
+        showToast(message: error.toString(), isError: true);
+      });
     } else {
-      showtoast(message: fillAllFields, isError: true);
+      showToast(message: fillAllFields, isError: true);
     }
+  }
+
+  storeUserData() async {
+    await FirebaseVariables().userCollection.doc().set({
+      'id': userData.userUid,
+      'name': userData.name,
+      'email': userData.email,
+      'phoneNo': userData.phoneNo,
+    }).then((value) {
+      showToast(message: 'Account Created', isError: false);
+      Future.delayed(const Duration(milliseconds: 200),
+          () => Get.toNamed(Routes.AGREEMENT));
+    }).onError((error, stackTrace) {
+      showToast(message: error.toString(), isError: true);
+    });
   }
 }
