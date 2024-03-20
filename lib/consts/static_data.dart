@@ -4,5 +4,5 @@ class StaticData {
   static String userName = '';
   static String firstName = '';
   static String lastName = '';
-  static String mobile = '';
+  static String phoneNo = '';
 }

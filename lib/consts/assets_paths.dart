@@ -5,7 +5,14 @@ class ImagePath {
   static const String gettingMassage = 'assets/images/getting_massage.png';
   static const String eyeMakeup = 'assets/images/eye_makeup.png';
   static const String cleansingFacial = 'assets/images/cleansing_facial.png';
+  static const String birthdayDecor = 'assets/images/birthday_decor.png';
+  static const String bridalShowerSetup =
+      'assets/images/bridal_shower_setup.png';
   static const String engagementDecor = 'assets/images/engagement_decor.png';
+  static const String weddingPhotography =
+      'assets/images/wedding_photography.png';
+  static const String turmericCleansingFacial =
+      'assets/images/turmeric_cleansing_facial.png';
 }
 
 class IconPath {
@@ -29,4 +36,5 @@ class IconPath {
   static const String eventDecorIcon = 'assets/icons/cat_icon_event_decor.svg';
   static const String tailoringIcon = 'assets/icons/cat_icon_tailoring.svg';
   static const String starIcon = 'assets/icons/star_icon.svg';
+  static const String featuredLabel = 'assets/icons/featured_label.svg';
 }
