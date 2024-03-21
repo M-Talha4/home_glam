@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../signup/models/signup_model.dart';
 import '/consts/variables.dart';
-
 import '/utils/toast.dart';
 import 'package:get/get.dart';
 import '/app/routes/app_pages.dart';
@@ -54,15 +53,14 @@ class VerificationController extends GetxController {
       for (var controller in controllers) {
         controller.clear();
       }
-      print(resendToken);
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: verificationId, smsCode: code);
-      // credential.
       await FirebaseVariables()
           .auth
           .signInWithCredential(credential)
           .then((value) {
         showToast(message: 'Verification Completed', isError: false);
+        userData.userUid = value.user!.uid;
         storeUserData();
       }).onError((error, stackTrace) {
         showToast(message: error.toString(), isError: true);

@@ -116,7 +116,7 @@ class SignUpView extends GetView<SignUpController> {
                     LoadingButton(
                         isLoading: obj.isLoading,
                         onTap: () {
-                          obj.signUp();
+                          obj.signUpWithEmail();
                         },
                         text: signupText),
                     CustomText(

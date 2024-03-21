@@ -4,6 +4,7 @@ import 'app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'services/firebase_options.dart';
+import 'utils/sharepreference_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future main() async {
@@ -11,6 +12,7 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  SharedPreferencesHelper.initialize();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
@@ -26,7 +28,6 @@ Future main() async {
       debugShowCheckedModeBanner: false,
     ),
   );
-  // SharedPreferencesHelper.initialize();
 
   // FirebaseService firebaseService = FirebaseService();
 }

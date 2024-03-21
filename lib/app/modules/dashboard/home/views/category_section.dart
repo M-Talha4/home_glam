@@ -55,7 +55,7 @@ class CategorySection extends StatelessWidget {
                         alignment: Alignment.center,
                         child: CustomText(
                           text: obj.catItems[index].name,
-                          fontSize: AppStyle.size(context, 13),
+                          fontSize: AppStyle.size(context, 11),
                         ),
                       )
                     ],

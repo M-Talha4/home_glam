@@ -2,6 +2,7 @@ import '/utils/style.dart';
 import '/consts/const.dart';
 import 'package:get/get.dart';
 import '/consts/app_color.dart';
+import '/utils/validation.dart';
 import '/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import '../controllers/login_controller.dart';
@@ -52,28 +53,37 @@ class LoginView extends GetView<LoginController> {
                         fontSize: AppStyle.subheadingsize(context),
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomText(
-                          text: emailText,
-                          fontSize: AppStyle.bodysize(context),
-                        ),
-                        RectangularTextFormField(
-                          validation: (value) => null,
-                        ),
-                        SizedBox(
-                          height: height * 0.01,
-                        ),
-                        CustomText(
-                          text: passwordText,
-                          fontSize: AppStyle.bodysize(context),
-                        ),
-                        RectangularTextFormField(
-                          validation: (value) => null,
-                        ),
-                      ],
+                    Form(
+                      key: obj.formkey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
+                            text: emailText,
+                            fontSize: AppStyle.bodysize(context),
+                          ),
+                          RectangularTextFormField(
+                            controller: obj.emailController,
+                            keyboardtype: TextInputType.emailAddress,
+                            validation: (value) =>
+                                Validation.emaiValidation(value),
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          CustomText(
+                            text: passwordText,
+                            fontSize: AppStyle.bodysize(context),
+                          ),
+                          RectangularTextFormField(
+                            controller: obj.passwordController,
+                            keyboardtype: TextInputType.visiblePassword,
+                            validation: (value) =>
+                                Validation.passworddValidation(value),
+                          ),
+                        ],
+                      ),
                     ),
                     TextButton(
                         onPressed: () {},
@@ -82,7 +92,12 @@ class LoginView extends GetView<LoginController> {
                           fontWeight: bold5,
                           color: AppColor.primary,
                         )),
-                    CustomButton(onTap: () {}, text: loginText),
+                    LoadingButton(
+                        isLoading: obj.isLoading,
+                        onTap: () {
+                          obj.login();
+                        },
+                        text: loginText),
                     CustomText(
                       text: or,
                       fontSize: AppStyle.bodysize(context),

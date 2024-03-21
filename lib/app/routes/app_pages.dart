@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 import '../modules/dashboard/home/services/bindings/services_binding.dart';
 import '../modules/dashboard/home/services/views/services_view.dart';
@@ -14,8 +16,8 @@ import '../modules/dashboard/home/bindings/home_binding.dart';
 import '../modules/dashboard/home/views/home_view.dart';
 import '../modules/dashboard/notification/bindings/notification_binding.dart';
 import '../modules/dashboard/notification/views/notification_view.dart';
-import '../modules/dashboard/setting/bindings/setting_binding.dart';
-import '../modules/dashboard/setting/views/setting_view.dart';
+import '../modules/dashboard/account/bindings/account_binding.dart';
+import '../modules/dashboard/account/views/account_view.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/forgot_password/views/forgot_password_view.dart';
@@ -117,9 +119,9 @@ class AppPages {
           binding: NotificationBinding(),
         ),
         GetPage(
-          name: _Paths.SETTING,
-          page: () => const SettingView(),
-          binding: SettingBinding(),
+          name: _Paths.ACCOUNT,
+          page: () => const AccountView(),
+          binding: AccountBinding(),
         ),
       ],
     ),

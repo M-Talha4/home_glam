@@ -1,3 +1,5 @@
+import 'package:home_glam/utils/sharepreference_helper.dart';
+
 import '/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +34,13 @@ class SplashController extends GetxController
 
   _goToNextScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAllNamed(Routes.INTRO);
+      String userId = SharedPreferencesHelper.getString('userId') ?? '';
+      print(SharedPreferencesHelper.getString('userId'));
+      if (userId == '') {
+        Get.offAllNamed(Routes.INTRO);
+      } else {
+        Get.offAllNamed(Routes.DASHBOARD);
+      }
     });
   }
 

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '/consts/assets_paths.dart';
 import '../home/views/home_view.dart';
 import 'package:flutter/material.dart';
-import '../setting/views/setting_view.dart';
+import '../account/views/account_view.dart';
 import '../calender/views/calender_view.dart';
 import '../notification/views/notification_view.dart';
 
@@ -18,7 +18,7 @@ class DashboardController extends GetxController {
     const HomeView(),
     const CalenderView(),
     const NotificationView(),
-    const SettingView()
+    const AccountView()
   ];
   List<BottomTabData> tabData = [
     BottomTabData(title: homeText, icon: IconPath.homeIcon),
