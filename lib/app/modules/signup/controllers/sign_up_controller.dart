@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:home_glam/utils/sharepreference_helper.dart';
 import '../../signup/models/signup_model.dart';
 import '/consts/variables.dart';
 import '/utils/toast.dart';
@@ -27,7 +28,45 @@ class SignUpController extends GetxController {
     update();
   }
 
-  signUp() async {
+  signUpWithEmail() async {
+    if (formKey.currentState!.validate()) {
+      Future.delayed(const Duration(milliseconds: 200), () {
+        isLoading = true;
+        update();
+      });
+      try {
+        await FirebaseVariables()
+            .auth
+            .createUserWithEmailAndPassword(
+                email: emailController.text.toString(),
+                password: passwordController.text.toString())
+            .then((value) {
+          userData = UserModel(
+              userUid: value.user!.uid,
+              name: nameController.text.toString(),
+              email: emailController.text.toString(),
+              phoneNo: phoneController.text.toString());
+          debugPrint('uid ${userData.userUid}');
+          debugPrint('Account Created');
+          storeCredentials();
+        }).onError((error, stackTrace) {
+          isLoading = false;
+          update();
+          showToast(message: error.toString(), isError: true);
+        });
+      } on FirebaseAuthException catch (e) {
+        isLoading = false;
+        update();
+        showToast(message: 'firebase issue ${e.code} ', isError: true);
+      } catch (e) {
+        isLoading = false;
+        update();
+        showToast(message: 'catch issue ${e.toString()} ', isError: true);
+      }
+    }
+  }
+
+  signUpWithPhone() async {
     if (formKey.currentState!.validate()) {
       Future.delayed(const Duration(milliseconds: 200), () {
         isLoading = true;
@@ -49,9 +88,9 @@ class SignUpController extends GetxController {
                   isLoading = false;
                   update();
                   showToast(message: 'Code sent', isError: false);
-                  print('verificationId: $verificationId');
+                  debugPrint('verificationId: $verificationId');
                   userData = UserModel(
-                      userUid: verificationId,
+                      userUid: '',
                       name: nameController.text.toString(),
                       email: nameController.text.toString(),
                       phoneNo: phoneController.text.toString());
@@ -80,5 +119,43 @@ class SignUpController extends GetxController {
         showToast(message: 'catch issue ${e.toString()} ', isError: true);
       }
     }
+  }
+
+  storeCredentials() {
+    try {
+      FirebaseVariables().userCollection.doc(userData.userUid).set({
+        'id': userData.userUid,
+        'name': userData.name,
+        'email': userData.email,
+        'phoneNo': userData.phoneNo,
+      }).then((value) {
+        SharedPreferencesHelper.setString('userId', userData.userUid);
+        SharedPreferencesHelper.setString('name', userData.name);
+        SharedPreferencesHelper.setString('email', userData.email);
+        SharedPreferencesHelper.setString('phoneNo', userData.phoneNo);
+        showToast(message: 'SignUp Successfull', isError: false);
+        isLoading = false;
+        update();
+        clear();
+        Future.delayed(const Duration(milliseconds: 100), () {
+          Get.toNamed(Routes.AGREEMENT);
+        });
+      }).onError((error, stackTrace) {
+        isLoading = false;
+        update();
+        showToast(message: error.toString(), isError: true);
+      });
+    } catch (e) {
+      isLoading = false;
+      update();
+      showToast(message: 'catch issue ${e.toString()} ', isError: true);
+    }
+  }
+
+  clear() {
+    nameController.clear();
+    emailController.clear();
+    passwordController.clear();
+    phoneController.clear();
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 part of 'app_pages.dart';
 // DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
 
@@ -17,19 +19,19 @@ abstract class Routes {
   static const HOME = _Paths.DASHBOARD + _Paths.HOME;
   static const CALENDER = _Paths.DASHBOARD + _Paths.CALENDER;
   static const NOTIFICATION = _Paths.DASHBOARD + _Paths.NOTIFICATION;
-  static const SETTING = _Paths.DASHBOARD + _Paths.SETTING;
+  static const Account = _Paths.DASHBOARD + _Paths.ACCOUNT;
   static const SERVICES = _Paths.SERVICES;
   static const EDIT_CHILD_INFO =
-      _Paths.DASHBOARD + _Paths.SETTING + _Paths.EDIT_CHILD_INFO;
+      _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.EDIT_CHILD_INFO;
   static const RECOMMED_TOFRIEND =
-      _Paths.DASHBOARD + _Paths.SETTING + _Paths.RECOMMED_TOFRIEND;
+      _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.RECOMMED_TOFRIEND;
   static const CONTACT_US =
-      _Paths.DASHBOARD + _Paths.SETTING + _Paths.CONTACT_US;
+      _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.CONTACT_US;
   static const TERMAND_POLICY =
-      _Paths.DASHBOARD + _Paths.SETTING + _Paths.TERMAND_POLICY;
-  static const ABOUT_US = _Paths.DASHBOARD + _Paths.SETTING + _Paths.ABOUT_US;
+      _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.TERMAND_POLICY;
+  static const ABOUT_US = _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.ABOUT_US;
   static const PRIVACY_POLICY =
-      _Paths.DASHBOARD + _Paths.SETTING + _Paths.PRIVACY_POLICY;
+      _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.PRIVACY_POLICY;
 }
 
 abstract class _Paths {
@@ -49,7 +51,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const CALENDER = '/calender';
   static const NOTIFICATION = '/notification';
-  static const SETTING = '/setting';
+  static const ACCOUNT = '/account';
   static const SERVICES = '/services';
   static const EDIT_CHILD_INFO = '/edit-child-info';
   static const RECOMMED_TOFRIEND = '/recommed-tofriend';
