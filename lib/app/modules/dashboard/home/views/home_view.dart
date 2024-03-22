@@ -1,3 +1,5 @@
+import 'package:home_glam/consts/static_data.dart';
+
 import '/utils/style.dart';
 import '/consts/const.dart';
 import 'package:get/get.dart';
@@ -43,7 +45,7 @@ class HomeView extends GetView<HomeController> {
                                         fontSize: AppStyle.size(context, 27))),
                               ),
                               CustomText(
-                                  text: maria,
+                                  text: StaticData.name,
                                   fontSize: AppStyle.headingsize(context)),
                               const Spacer(),
                               Container(

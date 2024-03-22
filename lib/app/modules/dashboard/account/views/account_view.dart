@@ -1,13 +1,12 @@
-import 'package:home_glam/consts/app_color.dart';
-import 'package:home_glam/consts/const.dart';
-import 'package:home_glam/widgets/custom_button.dart';
-import 'package:home_glam/widgets/custom_text.dart';
+import 'package:home_glam/consts/static_data.dart';
 
 import '/utils/style.dart';
-import 'package:flutter/material.dart';
-
+import '/consts/const.dart';
 import 'package:get/get.dart';
-
+import '/consts/app_color.dart';
+import '/widgets/custom_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../controllers/account_controller.dart';
 
 class AccountView extends GetView<AccountController> {
@@ -18,6 +17,13 @@ class AccountView extends GetView<AccountController> {
     final double height = MediaQuery.sizeOf(context).height;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: CustomText(
+            text: accountText,
+            fontSize: AppStyle.headingsize(context),
+          ),
+          centerTitle: true,
+        ),
         body: GetBuilder<AccountController>(
             init: AccountController(),
             builder: (obj) {
@@ -25,25 +31,51 @@ class AccountView extends GetView<AccountController> {
                   width: width,
                   height: height,
                   child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: AppStyle.defaultPadding(context),
-                      ),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              height: height * 0.2,
-                              color: AppColor.amber,
+                      padding: EdgeInsets.symmetric(vertical: height * 0.05),
+                      child: ListView.separated(
+                        itemCount: obj.accountItems.length,
+                        physics: const BouncingScrollPhysics(),
+                        separatorBuilder: (context, index) => const Divider(),
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: width * 0.04),
+                            child: ListTile(
+                              onTap: () {
+                                obj.onTap(index);
+                              },
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(width * 0.025)),
+                              tileColor: obj.currentIndex == index
+                                  ? obj.tileColor
+                                  : AppColor.white,
+                              leading: index == 0
+                                  ? CircleAvatar(
+                                      radius: width * 0.06,
+                                      backgroundColor: AppColor.primary,
+                                      child: StaticData.imagePath == ''
+                                          ? null
+                                          : Image.network(obj
+                                              .accountItems[index].imagePath))
+                                  : SvgPicture.asset(
+                                      obj.accountItems[index].imagePath,
+                                      colorFilter: ColorFilter.mode(
+                                          obj.currentIndex == index
+                                              ? obj.contentColor
+                                              : AppColor.black,
+                                          BlendMode.srcIn),
+                                    ),
+                              title: CustomText(
+                                text: obj.accountItems[index].title,
+                                color: obj.currentIndex == index
+                                    ? obj.contentColor
+                                    : AppColor.black,
+                              ),
                             ),
-                            CustomText(text: obj.name),
-                            CustomText(text: obj.email),
-                            CustomText(text: obj.phoneNo),
-                            CustomButton(
-                                onTap: () {
-                                  obj.logout();
-                                },
-                                text: logOut)
-                          ])));
+                          );
+                        },
+                      )));
             }),
       ),
     );

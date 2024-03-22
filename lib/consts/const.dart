@@ -20,10 +20,12 @@ const String getStarted = 'Get Started';
 
 // .......................Location Page........................................
 const String chooseCountry = 'Select your country and add your location';
+const String countryText = 'Country';
 const String selectCountry = 'Select Country';
 const String countryList1 = 'Islamabad, Pakistan';
 const String countryList2 = 'London, United Kingdom';
 const String countryList3 = 'Paris, France';
+const String pleaseSelectCountry = 'Please Select a Country';
 const String location = 'Location';
 const String buisnessOrCustomer =
     'Select weather you are a bussiness or customer';
@@ -69,7 +71,6 @@ const String accountText = 'Account';
 
 // ........................Home Page.........................................
 const String helloText = 'Hello ';
-const String maria = 'Maria,';
 const String faceText = 'Face';
 const String hairText = 'Hair';
 const String nailsText = 'Nail';
@@ -104,7 +105,30 @@ const String letsExplore =
 const String notifications = 'Notifications';
 // ........................Login Page.........................................
 
+// ........................Account Page.........................................
+const String profileText = 'Profile';
+const String favoriteText = 'Favorite';
+const String paymentText = 'Payment';
+const String settingsText = 'Settings';
+const String termsAndConditionsText = 'Terms and Conditions';
+const String logOutText = 'Logout';
+
+// ........................Profile Page.........................................
+const String updateText = 'Update';
+const String profileUpdatedText = 'Profile Updated';
+
+// ........................Settings Page.........................................
+const String helpCenterText = 'Help Center';
+const String systemNotifications = 'System Notifications';
+const String receiveUpdatesonServices = 'Receive services and booking updates';
+const String promoMessages = 'Promo Messages';
+const String receiveUpdatesOnDeals =
+    'Receive updates on great deals and steals';
+const String chatsText = 'Chats';
+const String receiveInAppMessages = 'Receive in-app messages on your phone';
+const String locationVisibility = 'Location Visibility';
+const String allowLocationVisibility = 'Allow location visibility to everyone ';
+
 // ........................Login Page.........................................
-const String logOut = 'Logout';
 // ........................Login Page.........................................
 

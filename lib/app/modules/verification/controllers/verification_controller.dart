@@ -1,12 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import '../../signup/models/signup_model.dart';
-import '/consts/variables.dart';
 import '/utils/toast.dart';
+import '/consts/const.dart';
 import 'package:get/get.dart';
+import '/consts/variables.dart';
 import '/app/routes/app_pages.dart';
 import 'package:flutter/widgets.dart';
+import '../../models/user_model.dart';
 import 'package:flutter/material.dart';
-import '/consts/const.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class VerificationController extends GetxController {
   int resendToken = Get.arguments[0]['resendToken'];

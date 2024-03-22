@@ -75,6 +75,7 @@ class LoadingButton extends StatelessWidget {
   final bool isLoading;
   final double? width;
   final double? height;
+  final bool isBig;
   final Color? bgcolor;
   final Color? shadowcolor;
   final Color? txtcolor;
@@ -89,6 +90,7 @@ class LoadingButton extends StatelessWidget {
       required this.isLoading,
       this.width,
       this.height,
+      this.isBig = true,
       this.bgcolor,
       this.shadowcolor,
       this.txtcolor,
@@ -105,15 +107,15 @@ class LoadingButton extends StatelessWidget {
       splashColor: AppColor.primary,
       onTap: onTap,
       child: Container(
-        width: width ?? width1 * 0.4,
+        width: isBig ? width1 : width ?? width1 * 0.35,
         height: height ?? height1 * 0.06,
         decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                  offset: const Offset(0, 3),
-                  blurRadius: 7,
-                  spreadRadius: 5,
-                  color: shadowcolor ?? AppColor.grey.withOpacity(0.5))
+            boxShadow: const [
+              // BoxShadow(
+              //     offset: const Offset(0, 3),
+              //     blurRadius: 7,
+              //     spreadRadius: 5,
+              //     color: shadowcolor ?? AppColor.grey.withOpacity(0.5))
             ],
             borderRadius: BorderRadius.circular(borderradius ?? 4),
             color: bgcolor ?? AppColor.primary),

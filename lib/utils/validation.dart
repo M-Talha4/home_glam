@@ -55,7 +55,7 @@ class Validation {
     }
 
     // Regular expression to match phone numbers with country code
-    RegExp regex = RegExp(r'^\+\d{1,3}\d{3,14}$');
+    RegExp regex = RegExp(r'^\+\d{1,3}\d{10,14}$');
 
     if (!regex.hasMatch(value)) {
       return 'Invalid phone number format. Please include country code starting with +';

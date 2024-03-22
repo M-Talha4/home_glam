@@ -1,18 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import '/utils/toast.dart';
 import 'package:get/get.dart';
-import 'package:home_glam/app/modules/signup/models/signup_model.dart';
-import 'package:home_glam/app/routes/app_pages.dart';
-import 'package:home_glam/consts/variables.dart';
-import 'package:home_glam/utils/sharepreference_helper.dart';
-import 'package:home_glam/utils/toast.dart';
+import '/consts/variables.dart';
+import '/app/routes/app_pages.dart';
+import 'package:flutter/widgets.dart';
+import '../../models/user_model.dart';
+import 'package:flutter/material.dart';
+import '/utils/sharepreference_helper.dart';
 import '../../../../consts/assets_paths.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginController extends GetxController {
   bool isLoading = false;
-  UserModel userData = UserModel(userUid: '', name: '', email: '', phoneNo: '');
+  UserModel userData = UserModel(
+      userUid: '',
+      name: '',
+      email: '',
+      phoneNo: '',
+      type: '',
+      location: '',
+      country: '');
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -64,11 +71,17 @@ class LoginController extends GetxController {
           userUid: data['id']!,
           name: data['name']!,
           email: data['email']!,
-          phoneNo: data['phoneNo']!);
+          phoneNo: data['phoneNo']!,
+          type: data['type']!,
+          location: data['location']!,
+          country: data['country']!);
       SharedPreferencesHelper.setString('userId', userData.userUid);
       SharedPreferencesHelper.setString('name', userData.name);
       SharedPreferencesHelper.setString('email', userData.email);
       SharedPreferencesHelper.setString('phoneNo', userData.phoneNo);
+      SharedPreferencesHelper.setString('type', userData.type);
+      SharedPreferencesHelper.setString('location', userData.location);
+      SharedPreferencesHelper.setString('country', userData.country);
       isLoading = false;
       update();
       showToast(message: 'Login Successfull', isError: false);

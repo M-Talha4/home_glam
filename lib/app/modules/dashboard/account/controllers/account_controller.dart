@@ -1,20 +1,56 @@
+import 'dart:ui';
+import '/consts/const.dart';
 import 'package:get/get.dart';
-import 'package:home_glam/app/routes/app_pages.dart';
-import 'package:home_glam/consts/variables.dart';
-import 'package:home_glam/utils/sharepreference_helper.dart';
+import '/consts/app_color.dart';
+import '/consts/static_data.dart';
+import '/consts/assets_paths.dart';
+import '/app/routes/app_pages.dart';
+import '../models/account_model.dart';
 
 class AccountController extends GetxController {
-  String name = SharedPreferencesHelper.getString('name') ?? 'Abc';
-  String email = SharedPreferencesHelper.getString('email') ?? 'abc@abc.com';
-  String phoneNo =
-      SharedPreferencesHelper.getString('phoneNo') ?? '+111111111111';
+  bool profileImage = false;
+  int? currentIndex;
+  Color tileColor = AppColor.lightPink;
+  Color contentColor = AppColor.primary;
+  List<AccountModel> accountItems = [];
+  @override
+  onInit() {
+    accountItems = [
+      AccountModel(imagePath: '', title: '${StaticData.name} (me)'),
+      AccountModel(imagePath: IconPath.favoriteIcon, title: favoriteText),
+      AccountModel(imagePath: IconPath.paymentIcon, title: paymentText),
+      AccountModel(imagePath: IconPath.settingIcon, title: settingsText),
+      AccountModel(
+          imagePath: IconPath.termConditionIcon, title: termsAndConditionsText),
+    ];
+    super.onInit();
+  }
 
-  logout() {
-    FirebaseVariables().auth.signOut();
-    SharedPreferencesHelper.remove('userId');
-    SharedPreferencesHelper.remove('name');
-    SharedPreferencesHelper.remove('email');
-    SharedPreferencesHelper.remove('phoneNo');
-    Get.toNamed(Routes.LOGIN);
+  onTap(index) {
+    currentIndex = index;
+    update();
+    Future.delayed(const Duration(milliseconds: 100), () {
+      currentIndex = null;
+      update();
+      switch (index) {
+        case 0:
+          Get.toNamed(Routes.PROFILE);
+          break;
+        case 1:
+          // Get.toNamed(Routes.SETTINGS);
+          break;
+        case 2:
+          // Get.toNamed(Routes.SETTINGS);
+          break;
+        case 3:
+          Get.toNamed(Routes.SETTINGS);
+          break;
+        case 4:
+          // Get.toNamed(Routes.SETTINGS);
+          break;
+        default:
+          null;
+      }
+    });
   }
 }

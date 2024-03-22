@@ -17,10 +17,12 @@ abstract class Routes {
   static const ABOUT_CHILD = _Paths.ABOUT_CHILD;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const HOME = _Paths.DASHBOARD + _Paths.HOME;
-  static const CALENDER = _Paths.DASHBOARD + _Paths.CALENDER;
-  static const NOTIFICATION = _Paths.DASHBOARD + _Paths.NOTIFICATION;
-  static const Account = _Paths.DASHBOARD + _Paths.ACCOUNT;
-  static const SERVICES = _Paths.SERVICES;
+  static const CALENDER = _Paths.DASHBOARD + _Paths.CATEGORY;
+  static const NOTIFICATION = _Paths.DASHBOARD + _Paths.CHAT;
+  static const ACCOUNT = _Paths.DASHBOARD + _Paths.ACCOUNT;
+  static const SERVICES = _Paths.DASHBOARD + _Paths.HOME + _Paths.SERVICES;
+  static const PROFILE = _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.PROFILE;
+  static const SETTINGS = _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.SETTINGS;
   static const EDIT_CHILD_INFO =
       _Paths.DASHBOARD + _Paths.ACCOUNT + _Paths.EDIT_CHILD_INFO;
   static const RECOMMED_TOFRIEND =
@@ -49,10 +51,12 @@ abstract class _Paths {
   static const ABOUT_CHILD = '/about-child';
   static const DASHBOARD = '/dashboard';
   static const HOME = '/home';
-  static const CALENDER = '/calender';
-  static const NOTIFICATION = '/notification';
+  static const CATEGORY = '/category';
+  static const CHAT = '/chat';
   static const ACCOUNT = '/account';
+  static const PROFILE = '/profile';
   static const SERVICES = '/services';
+  static const SETTINGS = '/settings';
   static const EDIT_CHILD_INFO = '/edit-child-info';
   static const RECOMMED_TOFRIEND = '/recommed-tofriend';
   static const CONTACT_US = '/contact-us';

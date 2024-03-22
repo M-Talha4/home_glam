@@ -1,6 +1,10 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:home_glam/app/modules/dashboard/account/modules/settings/bindings/setting_binding.dart';
+import 'package:home_glam/app/modules/dashboard/account/modules/settings/views/setting_view.dart';
+import '/app/modules/dashboard/account/modules/profile/bindings/profile_binding.dart';
+import '/app/modules/dashboard/account/modules/profile/views/profile_view.dart';
 import '../modules/dashboard/home/services/bindings/services_binding.dart';
 import '../modules/dashboard/home/services/views/services_view.dart';
 import '../modules/new_password/bindings/new_password_binding.dart';
@@ -109,20 +113,31 @@ class AppPages {
       binding: DashboardBinding(),
       children: [
         GetPage(
-          name: _Paths.CALENDER,
+          name: _Paths.CATEGORY,
           page: () => const CalenderView(),
           binding: CalenderBinding(),
         ),
         GetPage(
-          name: _Paths.NOTIFICATION,
+          name: _Paths.CHAT,
           page: () => const NotificationView(),
           binding: NotificationBinding(),
         ),
         GetPage(
-          name: _Paths.ACCOUNT,
-          page: () => const AccountView(),
-          binding: AccountBinding(),
-        ),
+            name: _Paths.ACCOUNT,
+            page: () => const AccountView(),
+            binding: AccountBinding(),
+            children: [
+              GetPage(
+                name: _Paths.PROFILE,
+                page: () => const ProfileView(),
+                binding: ProfileBinding(),
+              ),
+              GetPage(
+                name: _Paths.SETTINGS,
+                page: () => const SettingView(),
+                binding: SettingBinding(),
+              ),
+            ]),
       ],
     ),
   ];
