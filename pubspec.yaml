@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.2.4
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:

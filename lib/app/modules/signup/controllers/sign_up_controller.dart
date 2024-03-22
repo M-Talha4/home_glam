@@ -1,17 +1,24 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
-import 'package:home_glam/utils/sharepreference_helper.dart';
-import '../../signup/models/signup_model.dart';
-import '/consts/variables.dart';
 import '/utils/toast.dart';
+import 'package:get/get.dart';
+import '/consts/variables.dart';
 import '/consts/assets_paths.dart';
 import '/app/routes/app_pages.dart';
+import '../../models/user_model.dart';
 import 'package:flutter/material.dart';
+import '/utils/sharepreference_helper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpController extends GetxController {
   bool isLoading = false;
   bool? showPassword;
-  UserModel userData = UserModel(userUid: '', name: '', email: '', phoneNo: '');
+  UserModel userData = UserModel(
+      userUid: '',
+      name: '',
+      email: '',
+      phoneNo: '',
+      type: '',
+      location: '',
+      country: '');
   List<String> iconList = [
     IconPath.googleIcon,
     IconPath.fbIcon,
@@ -45,7 +52,10 @@ class SignUpController extends GetxController {
               userUid: value.user!.uid,
               name: nameController.text.toString(),
               email: emailController.text.toString(),
-              phoneNo: phoneController.text.toString());
+              phoneNo: phoneController.text.toString(),
+              type: SharedPreferencesHelper.getString('type')!,
+              location: SharedPreferencesHelper.getString('location')!,
+              country: SharedPreferencesHelper.getString('country')!);
           debugPrint('uid ${userData.userUid}');
           debugPrint('Account Created');
           storeCredentials();
@@ -93,7 +103,10 @@ class SignUpController extends GetxController {
                       userUid: '',
                       name: nameController.text.toString(),
                       email: nameController.text.toString(),
-                      phoneNo: phoneController.text.toString());
+                      phoneNo: phoneController.text.toString(),
+                      type: SharedPreferencesHelper.getString('type')!,
+                      location: SharedPreferencesHelper.getString('location')!,
+                      country: SharedPreferencesHelper.getString('country')!);
 
                   Get.toNamed(Routes.VERIFICATION, arguments: [
                     {'resendToken': forceResendingToken},
@@ -123,12 +136,11 @@ class SignUpController extends GetxController {
 
   storeCredentials() {
     try {
-      FirebaseVariables().userCollection.doc(userData.userUid).set({
-        'id': userData.userUid,
-        'name': userData.name,
-        'email': userData.email,
-        'phoneNo': userData.phoneNo,
-      }).then((value) {
+      FirebaseVariables()
+          .userCollection
+          .doc(userData.userUid)
+          .set(userData.toMap())
+          .then((value) {
         SharedPreferencesHelper.setString('userId', userData.userUid);
         SharedPreferencesHelper.setString('name', userData.name);
         SharedPreferencesHelper.setString('email', userData.email);

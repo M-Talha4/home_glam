@@ -37,4 +37,10 @@ class IconPath {
   static const String tailoringIcon = 'assets/icons/cat_icon_tailoring.svg';
   static const String starIcon = 'assets/icons/star_icon.svg';
   static const String featuredLabel = 'assets/icons/featured_label.svg';
+  static const String favoriteIcon = 'assets/icons/favorite_icon.svg';
+  static const String paymentIcon = 'assets/icons/payment_icon.svg';
+  static const String termConditionIcon =
+      'assets/icons/term_condition_icon.svg';
+  static const String settingIcon = 'assets/icons/setting_icon.svg';
+  static const String cameraIcon = 'assets/icons/camera_icon.svg';
 }

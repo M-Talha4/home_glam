@@ -50,8 +50,7 @@ class LocationSelectView extends GetView<LocationSelectController> {
                       child: DropdownButtonHideUnderline(
                           child: DropdownButton(
                         onChanged: (value) {
-                          obj.selectedCountry = value!;
-                          obj.update();
+                          obj.onCountrySelect(value);
                         },
                         value: obj.selectedCountry,
                         isExpanded: true,
@@ -70,9 +69,10 @@ class LocationSelectView extends GetView<LocationSelectController> {
                       )),
                     ),
                     RectangularTextFormField(
-                        hint: location,
-                        fillColor: AppColor.lightPink,
-                        validation: (value) => null),
+                      controller: obj.locationController,
+                      hint: location,
+                      fillColor: AppColor.lightPink,
+                    ),
                     SizedBox(
                       width: width * 0.65,
                       child: CustomText(
