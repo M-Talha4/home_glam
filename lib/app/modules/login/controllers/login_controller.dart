@@ -19,7 +19,8 @@ class LoginController extends GetxController {
       phoneNo: '',
       type: '',
       location: '',
-      country: '');
+      country: '',
+      profileImage: '');
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -68,13 +69,14 @@ class LoginController extends GetxController {
           await FirebaseVariables().userCollection.doc(uid).get();
       Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       userData = UserModel(
-          userUid: data['id']!,
-          name: data['name']!,
-          email: data['email']!,
-          phoneNo: data['phoneNo']!,
-          type: data['type']!,
-          location: data['location']!,
-          country: data['country']!);
+          userUid: data['userUid'],
+          name: data['name'],
+          email: data['email'],
+          phoneNo: data['phoneNo'],
+          type: data['type'],
+          location: data['location'],
+          country: data['country'],
+          profileImage: data['profileImage']);
       SharedPreferencesHelper.setString('userId', userData.userUid);
       SharedPreferencesHelper.setString('name', userData.name);
       SharedPreferencesHelper.setString('email', userData.email);
@@ -82,6 +84,7 @@ class LoginController extends GetxController {
       SharedPreferencesHelper.setString('type', userData.type);
       SharedPreferencesHelper.setString('location', userData.location);
       SharedPreferencesHelper.setString('country', userData.country);
+      SharedPreferencesHelper.setString('profileImage', userData.profileImage);
       isLoading = false;
       update();
       showToast(message: 'Login Successfull', isError: false);

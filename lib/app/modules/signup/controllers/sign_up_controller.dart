@@ -12,13 +12,15 @@ class SignUpController extends GetxController {
   bool isLoading = false;
   bool? showPassword;
   UserModel userData = UserModel(
-      userUid: '',
-      name: '',
-      email: '',
-      phoneNo: '',
-      type: '',
-      location: '',
-      country: '');
+    userUid: '',
+    name: '',
+    email: '',
+    phoneNo: '',
+    type: '',
+    location: '',
+    country: '',
+    profileImage: '',
+  );
   List<String> iconList = [
     IconPath.googleIcon,
     IconPath.fbIcon,
@@ -55,7 +57,8 @@ class SignUpController extends GetxController {
               phoneNo: phoneController.text.toString(),
               type: SharedPreferencesHelper.getString('type')!,
               location: SharedPreferencesHelper.getString('location')!,
-              country: SharedPreferencesHelper.getString('country')!);
+              country: SharedPreferencesHelper.getString('country')!,
+              profileImage: '');
           debugPrint('uid ${userData.userUid}');
           debugPrint('Account Created');
           storeCredentials();
@@ -106,7 +109,8 @@ class SignUpController extends GetxController {
                       phoneNo: phoneController.text.toString(),
                       type: SharedPreferencesHelper.getString('type')!,
                       location: SharedPreferencesHelper.getString('location')!,
-                      country: SharedPreferencesHelper.getString('country')!);
+                      country: SharedPreferencesHelper.getString('country')!,
+                      profileImage: '');
 
                   Get.toNamed(Routes.VERIFICATION, arguments: [
                     {'resendToken': forceResendingToken},

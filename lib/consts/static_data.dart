@@ -7,8 +7,8 @@ class StaticData {
   static String name = SharedPreferencesHelper.getString('name') ?? '';
   static String email = SharedPreferencesHelper.getString('email') ?? '';
   static String phoneNo = SharedPreferencesHelper.getString('phoneNo') ?? '';
-  static String imagePath =
-      SharedPreferencesHelper.getString('imagePath') ?? '';
+  static String profileImage =
+      SharedPreferencesHelper.getString('profileImage') ?? '';
   static String type = SharedPreferencesHelper.getString('type') ?? '';
   static String location = SharedPreferencesHelper.getString('location') ?? '';
   static String country = SharedPreferencesHelper.getString('country') ?? '';

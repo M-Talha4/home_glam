@@ -9,7 +9,7 @@ class UserModel {
   String type;
   String location;
   String country;
-  String? profileImage;
+  String profileImage;
   UserModel({
     required this.userUid,
     required this.name,
@@ -18,7 +18,7 @@ class UserModel {
     required this.type,
     required this.location,
     required this.country,
-    this.profileImage,
+    required this.profileImage,
   });
 
   UserModel copyWith({
@@ -65,8 +65,7 @@ class UserModel {
       type: map['type'] as String,
       location: map['location'] as String,
       country: map['country'] as String,
-      profileImage:
-          map['profileImage'] != null ? map['profileImage'] as String : null,
+      profileImage: map['profileImage'] as String,
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:home_glam/consts/static_data.dart';
 
 import '/utils/style.dart';
@@ -54,10 +55,25 @@ class AccountView extends GetView<AccountController> {
                                   ? CircleAvatar(
                                       radius: width * 0.06,
                                       backgroundColor: AppColor.primary,
-                                      child: StaticData.imagePath == ''
-                                          ? null
-                                          : Image.network(obj
-                                              .accountItems[index].imagePath))
+                                      child: ClipOval(
+                                          child: StaticData.profileImage ==
+                                                      '' ||
+                                                  obj.isConnected == false
+                                              ? null
+                                              : CachedNetworkImage(
+                                                  imageUrl: obj
+                                                      .accountItems[index]
+                                                      .imagePath,
+                                                  width: width * 0.12,
+                                                  placeholder: (context, url) =>
+                                                      const Padding(
+                                                    padding:
+                                                        EdgeInsets.all(8.0),
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  ),
+                                                  fit: BoxFit.fitWidth,
+                                                )))
                                   : SvgPicture.asset(
                                       obj.accountItems[index].imagePath,
                                       colorFilter: ColorFilter.mode(

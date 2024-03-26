@@ -1,17 +1,15 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:home_glam/consts/app_color.dart';
-import 'package:home_glam/consts/assets_paths.dart';
-
 import '/utils/style.dart';
 import '/consts/const.dart';
 import 'package:get/get.dart';
+import '/consts/app_color.dart';
 import '/consts/static_data.dart';
+import '/consts/assets_paths.dart';
 import '/widgets/custom_text.dart';
 import '/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../controllers/profile_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../../../../widgets/custom_text_form_field.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -45,26 +43,78 @@ class ProfileView extends GetView<ProfileController> {
                         height: height * 0.03,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(width * 0.1),
+                              topRight: Radius.circular(width * 0.1),
+                            )),
+                            builder: (context) {
+                              return Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: AppStyle.defaultPadding(context)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        obj.getGalleryImage();
+                                      },
+                                      child: Icon(
+                                        Icons.image_rounded,
+                                        color: AppColor.primary,
+                                        size: width * 0.25,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        obj.getCameraImage();
+                                      },
+                                      child: Icon(
+                                        Icons.camera_alt_outlined,
+                                        color: AppColor.primary,
+                                        size: width * 0.25,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
                         child: SizedBox(
                           width: height * 0.16,
                           height: height * 0.16,
                           child: Stack(
                             children: [
-                              Container(
-                                width: height * 0.16,
-                                height: height * 0.16,
-                                alignment: Alignment.bottomRight,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColor.primary,
-                                  // image: StaticData.imagePath == ''
-                                  //     ? null
-                                  //     : DecorationImage(
-                                  //         image: NetworkImage(
-                                  //             StaticData.imagePath))
-                                ),
-                              ),
+                              CircleAvatar(
+                                  radius: height * 0.08,
+                                  backgroundColor: AppColor.primary,
+                                  child: ClipOval(
+                                      child: obj.image != null
+                                          ? Image.file(obj.image!.absolute,
+                                              width: height * 0.16,
+                                              fit: BoxFit.fitWidth)
+                                          : StaticData.profileImage == '' ||
+                                                  obj.isConnected == false
+                                              ? const SizedBox()
+                                              : CachedNetworkImage(
+                                                  imageUrl:
+                                                      StaticData.profileImage,
+                                                  width: height * 0.16,
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                        child: SizedBox(
+                                                          width: height * 0.04,
+                                                          height: height * 0.04,
+                                                          child:
+                                                              const CircularProgressIndicator(),
+                                                        ),
+                                                      ),
+                                                  fit: BoxFit.fitWidth))),
                               Positioned(
                                   right: width * 0.005,
                                   bottom: height * 0.015,
@@ -73,9 +123,6 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ),
                       ),
-                      // const CircleAvatar(
-                      //   radius: 50,
-                      // ),
                       CustomText(
                         text: StaticData.name,
                         fontSize: AppStyle.subheadingsize(context),
@@ -121,7 +168,7 @@ class ProfileView extends GetView<ProfileController> {
                         child: LoadingButton(
                           isLoading: obj.isLoading,
                           onTap: () {
-                            obj.updateData();
+                            obj.uploadImage();
                           },
                           text: updateText,
                         ),
