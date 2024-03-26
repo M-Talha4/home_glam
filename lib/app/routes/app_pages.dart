@@ -45,18 +45,6 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
-      children: [
-        GetPage(
-          name: _Paths.HOME,
-          page: () => const HomeView(),
-          binding: HomeBinding(),
-        ),
-      ],
-    ),
-    GetPage(
       name: _Paths.SPLASH,
       transition: Transition.leftToRight,
       page: () => const SplashView(),
@@ -103,15 +91,22 @@ class AppPages {
       binding: NewPasswordBinding(),
     ),
     GetPage(
-      name: _Paths.SERVICES,
-      page: () => const ServicesView(),
-      binding: ServicesBinding(),
-    ),
-    GetPage(
       name: _Paths.DASHBOARD,
       page: () => const DashboardView(),
       binding: DashboardBinding(),
       children: [
+        GetPage(
+          name: _Paths.HOME,
+          page: () => const HomeView(),
+          binding: HomeBinding(),
+          children: [
+            GetPage(
+              name: _Paths.SERVICES,
+              page: () => const ServicesView(),
+              binding: ServicesBinding(),
+            ),
+          ],
+        ),
         GetPage(
           name: _Paths.CATEGORY,
           page: () => const CalenderView(),

@@ -32,7 +32,10 @@ class SettingController extends GetxController {
     SharedPreferencesHelper.remove('name');
     SharedPreferencesHelper.remove('email');
     SharedPreferencesHelper.remove('phoneNo');
-    SharedPreferencesHelper.remove('imagePath');
-    Get.toNamed(Routes.LOGIN);
+    SharedPreferencesHelper.remove('type');
+    SharedPreferencesHelper.remove('location');
+    SharedPreferencesHelper.remove('country');
+    SharedPreferencesHelper.remove('profileImage');
+    Get.offAllNamed(Routes.LOCATION_SELECTION);
   }
 }
